@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+
+<ul>
+    {% for user in myuser %}
+        <li>{{user.0}}-{{ user.1 }}</li>
+    {% endfor %}
+
+</ul>
+<h1>List</h1>
+
+<table width="100%" border="4">
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>action</td>
+    </tr>
+        {% for user in myuser %}
+    <tr>
+    <td>{{user.0}}</td>
+        <td>{{user.1}}</td>
+        <td><a href="">update</a> <a href="">delet</a></td>
+    </tr>
+    {% endfor %}
+
+
+</table>
+
+{% endblock %}

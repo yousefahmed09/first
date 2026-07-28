@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+
+
+<ul>
+    {% for trainee in alltrainee %}
+        <li>{{trainee.0}}-{{ trainee.1 }}</li>
+    {% endfor %}
+
+</ul>
+<h1>List</h1>
+
+<table width="100%" border="4">
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>action</td>
+    </tr>
+        {% for trainee in alltrainee %}
+    <tr>
+    <td>{{trainee.0}}</td>
+        <td>{{trainee.1}}</td>
+        <td><a href="{% url 'update' trainee.0%}">update</a> <a href="{% url 'delete' trainee.0%}">delet</a></td>
+    </tr>
+    {% endfor %}
+
+
+</table>
+
+{% endblock %}

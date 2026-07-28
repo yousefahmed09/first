@@ -2,10 +2,11 @@ from django.contrib import admin
 from django.urls import path
 from .views import *
 urlpatterns = [
-    path('name', name),
-    path('update', update),
-    path('id', id),
-    path('gpa', gpa),
-    path('Cgpa', Cgpa),
+    path('alltrainee', alltrainee),
+    path('Name/<str:name>/', Name),
+    path('update/<int:update>/', update,name='update'),
+    path('id/<int:id>/', id),
+    path('gpa/<int:gpa>/', gpa),
+    path('delete/<int:d>/', delete,name='delete'),
 
 ]
