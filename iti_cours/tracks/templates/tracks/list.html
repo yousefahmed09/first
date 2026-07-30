@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+all tracks
+{% endblock%}
+{% block content%}
+<ul>
+    {% for track in tracks %}
+    <li>{{track.id}} - {{track.name}}</li>
+    {%endfor%}
+</ul>
+
+
+<table width="100%" border="1">
+    <tr>
+        <td>ID</td>
+        <td>Course</td>
+        <td>Actions</td>
+    </tr>
+    {% for track in tracks%}
+    <tr>
+        <td>{{ track.id }}</td>
+        <td>{{track.name }}</td>
+        <td><a href="{% url 'updatetrack' track.id%}">Update</a> <a href="{% url 'deletetrack' track.id%}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

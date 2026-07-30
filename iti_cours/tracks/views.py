@@ -1,16 +1,29 @@
 from django.shortcuts import render
+
 from django.http import HttpResponse
+from .models import Track
+def insert(request):
+    print(request.POST)
+    if request.method == 'POST':
+        name = request.POST['trackname']
+        Track.objects.create(name=name)
+        return HttpResponse(f'<h1> Trainee {name} inserted successfully</h1>')
+    return render(request, 'tracks/insert.html')
 
-def alltrackes(request):
-    return HttpResponse('<h1> python c++  java script <h1>')
 
-def idtrackes(request):
-    return HttpResponse('<h1> you in tracks id page<h1>')
 
-def updatetrackes(request):
-    return HttpResponse('<h1> you in tracks update page <h1>')
+def allTracks(request):
+    context={'tracks':Track.objects.all()}
+    return render(request,'tracks/list.html',context)
 
-def mindmaptrackes(request):
-    return HttpResponse('<h1>you in tracks mindmap page <h1>')
 
+def gettrackbyid(request,id):
+    return HttpResponse(f'<p>We are in track {id}</p>')
+
+
+def updatetrack(request,id):
+    return HttpResponse(f'<p>We are in update {id}</p>')
+
+def deletetrack(request,id):
+    return HttpResponse(f'<p>We are in delete track {id}</p>')
 # Create your views here.

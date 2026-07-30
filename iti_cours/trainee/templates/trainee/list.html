@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+
+
+{% block title %}
+all_traniee
+{% endblock%}
 {% block content%}
-
-
 <ul>
     {% for trainee in alltrainee %}
-        <li>{{trainee.0}}-{{ trainee.1 }}</li>
+        <li>{{trainee.id}}-{{ trainee.name }}-{{ trainee.email }}</li>
     {% endfor %}
 
 </ul>
@@ -15,13 +18,15 @@
     <tr>
         <td>id</td>
         <td>name</td>
+        <td>email</td>
         <td>action</td>
     </tr>
         {% for trainee in alltrainee %}
     <tr>
-    <td>{{trainee.0}}</td>
-        <td>{{trainee.1}}</td>
-        <td><a href="{% url 'update' trainee.0%}">update</a> <a href="{% url 'delete' trainee.0%}">delet</a></td>
+    <td>{{trainee.id}}</td>
+        <td>{{trainee.name}}</td>
+        <td>{{trainee.email}}</td>
+        <td><a href="{% url 'update' trainee.id %}">update</a> <a href="{% url 'delete' trainee.id%}">delet</a></td>
     </tr>
     {% endfor %}
 

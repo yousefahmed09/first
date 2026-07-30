@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'iti_cours.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        'USER': 'postgres',
+        'NAME': 'iti_django',
+        'PASSWORD': 'yousef2006ahmed'
     }
 }
 
