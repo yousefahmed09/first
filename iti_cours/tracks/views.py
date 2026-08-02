@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 from django.http import HttpResponse
 from .models import Track
@@ -11,9 +11,8 @@ def insert(request):
     return render(request, 'tracks/insert.html')
 
 
-
 def allTracks(request):
-    context={'tracks':Track.objects.all()}
+    context={'tracks':Track.objects.all().order_by('-id')}
     return render(request,'tracks/list.html',context)
 
 
@@ -22,8 +21,16 @@ def gettrackbyid(request,id):
 
 
 def updatetrack(request,id):
-    return HttpResponse(f'<p>We are in update {id}</p>')
+    if request.method == 'POST':
+        Track.objects.filter(id=id).update(name=request.POST['trackname'])
+        return redirect('/track/allTracks')
+
+    return render(request, 'tracks/update.html', {'id': id})
+
+
+
 
 def deletetrack(request,id):
-    return HttpResponse(f'<p>We are in delete track {id}</p>')
+   Track.objects.filter(id=id).update(bo=False)
+   return redirect('/track/allTracks')
 # Create your views here.

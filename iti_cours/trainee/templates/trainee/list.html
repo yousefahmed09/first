@@ -22,12 +22,21 @@ all_traniee
         <td>action</td>
     </tr>
         {% for trainee in alltrainee %}
-    <tr>
-    <td>{{trainee.id}}</td>
-        <td>{{trainee.name}}</td>
-        <td>{{trainee.email}}</td>
-        <td><a href="{% url 'update' trainee.id %}">update</a> <a href="{% url 'delete' trainee.id%}">delet</a></td>
+
+          {% if trainee.bo %}
+            <tr>
+                <td>{{trainee.id}}</td>
+                <td>{{trainee.name}}</td>
+                <td>{{trainee.email}}</td>
+                <td>  <a href="{% url 'update_name' trainee.id %}">Update_name  </a>
+                      <a href="{% url 'update_email' trainee.id %}">Update_email  </a>
+                      <a href="{% url 'delete' trainee.id%}">Delete </a>
+                </td>
     </tr>
+            {% endif %}
+
+
+
     {% endfor %}
 
 

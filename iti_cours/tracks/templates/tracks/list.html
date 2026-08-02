@@ -20,12 +20,18 @@ all tracks
         <td>Actions</td>
     </tr>
     {% for track in tracks%}
-    <tr>
-        <td>{{ track.id }}</td>
-        <td>{{track.name }}</td>
-        <td><a href="{% url 'updatetrack' track.id%}">Update</a> <a href="{% url 'deletetrack' track.id%}">Delete</a>
-        </td>
-    </tr>
+        {% if track.bo %}
+
+        <tr>
+            <td>{{ track.id }}</td>
+            <td>{{track.name }}</td>
+            <td><a href="{% url 'updatetrack' track.id%}">Update</a> <a href="{% url 'deletetrack' track.id%}">Delete</a>
+            </td>
+        </tr>
+
+
+        {% endif %}
+
     {% endfor %}
 </table>
 {% endblock %}

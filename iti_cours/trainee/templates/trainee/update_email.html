@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+update email
+
+{% endblock%}
+{% block content%}
+
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+
+<label for="tremail">email</label>
+<input type="text" name="tremail" id="tremail">
+
+    <br><br>
+    <button type="submit">Add Trainee</button>
+</form>
+
+
+{% endblock %}
